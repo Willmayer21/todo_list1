@@ -1,0 +1,26 @@
+<%# <h1>Todos#index</h1>
+<p>Find me in app/views/todos/index.html.erb</p> %>
+
+
+
+<h1>Todo List</h1>
+
+<%= link_to 'New Todo', new_todo_path, class: 'button' %>
+
+<div class="todos">
+  <% @todos.each do |todo| %>
+    <div class="todo-item">
+      <h3><%= todo.title %></h3>
+      <p><%= todo.description %></p>
+      <p>Status: <%= todo.completed ? 'Completed' : 'Pending' %></p>
+
+      <div class="actions">
+        <%= link_to 'Show', todo_path(todo) %>
+        <%= link_to 'Edit', edit_todo_path(todo) %>
+        <%= link_to 'Delete', todo_path(todo),
+                    method: :delete,
+                    data: { confirm: 'Are you sure?' } %>
+      </div>
+    </div>
+  <% end %>
+</div>
